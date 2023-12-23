@@ -147,18 +147,24 @@ class ConsoleInterface:
         contact = Record(name)
         while True:
             address = input("Введіть адресу контакту: ").strip()
+            if not address:
+                break
             if len(name.strip()) < 3:
                 print('Адреса повинна складатися з більше ніж 2 символів')
             else:
                 break
         while True:
             phone = input("Введіть номер телефону контакту: ").strip()
+            if not phone:
+                break
             if not contact.validate_phone(phone):
                 console.print("Неправильний формат.\nВведіть номер телефона без пробілів, символів, має бути 10 цифр, натисність Enter", style='bold red')
             else:
                 break
         while True:
             email = input("Введіть email контакту: ").strip()
+            if not email:
+                break
             if not contact.validate_email(email):
                 console.print("Введіть електронну адресу латинськими літерами у такому форматі: name@name.name, натисність Enter: ", style='bold red')
             else:
@@ -261,7 +267,7 @@ class ConsoleInterface:
         contact = self.address_book.find(contact_name)
         if contact:
             address = input("Вкажіть адресу: ")
-            contact.add_address(address)
+            contact.add_adress(address)
         else:
             print("Ім'я контакту не знайдено")
     
